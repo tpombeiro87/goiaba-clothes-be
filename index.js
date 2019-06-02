@@ -3,10 +3,12 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const mailgun = require('mailgun-js')
+const cors = require('cors')
 
 const app = express()
 module.exports = app
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.post('*', (req, res) => {
