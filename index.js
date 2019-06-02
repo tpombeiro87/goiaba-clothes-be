@@ -22,7 +22,7 @@ app.post('*', (req, res) => {
     from: 'Site Goiaba Clothes <site@goiabaclothes.com>',
     to: `${process.env.TECNICAL_EMAIL}`, // , ${process.env.SALES_EMAIL}
     subject: 'Goiaba Clothes Site - Pedido de compra',
-    text: 'Email!',
+    text: `Email! ${JSON.stringify(req.body, null, 4)}`,
   }
   const mailgunInstance = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN })
   mailgunInstance.messages().send(data, (err, body) => {
