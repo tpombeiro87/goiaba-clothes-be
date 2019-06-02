@@ -1,0 +1,19 @@
+image: node:10.5.0
+
+stages:
+  - setup
+  - deploy
+
+setup:
+  stage: setup
+  script: npm install
+
+deploy:
+  stage: deploy
+  script:
+    - ./node_modules/.bin/now --token=NOW_TOKEN
+  environment:
+    name: production
+    url: goiaba-clothes-be.tpombeiro.now.sh
+  only:
+    - master
