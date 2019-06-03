@@ -17,6 +17,7 @@ const htmlGenerator = ({ clientDetails = {}, cart = {} }) => {
     </div>
   `
   // console.log(htmlToReturn)
+  //
   return htmlToReturn
 }
 
