@@ -11,8 +11,8 @@ setup:
 deploy:
   stage: deploy
   script:
-    - cd goiaba-clothes-be
-    - ./node_modules/.bin/now -e MAILGUN_API_KEY=$MAILGUN_API_KEY --token=$NOW_TOKEN
+    - npm i -g now --silent
+    - now -e MAILGUN_API_KEY=$MAILGUN_API_KEY --token=$NOW_TOKEN
   environment:
     name: production
     url: goiaba-clothes-be.tpombeiro.now.sh
