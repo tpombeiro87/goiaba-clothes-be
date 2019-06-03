@@ -11,6 +11,7 @@ setup:
 deploy:
   stage: deploy
   script:
+    - npm config set ignore-scripts false
     - npm i -g now --silent
     - now -e MAILGUN_API_KEY=$MAILGUN_API_KEY --token=$NOW_TOKEN
   environment:
