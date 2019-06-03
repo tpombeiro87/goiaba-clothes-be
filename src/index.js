@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const mailgun = require('mailgun-js')
 const cors = require('cors')
 
+const htmlGenerator = require('./html-generator')
+
 const app = express()
 module.exports = app
 
@@ -20,9 +22,9 @@ app.post('*', (req, res) => {
 
   const data = {
     from: 'Site Goiaba Clothes <site@goiabaclothes.com>',
-    to: `${process.env.TECNICAL_EMAIL}`, // , ${process.env.SALES_EMAIL}
+    to: `${process.env.TECNICAL_EMAIL}`, //   , ${process.env.SALES_EMAIL}
     subject: 'Goiaba Clothes Site - Pedido de compra',
-    text: `Email! ${JSON.stringify(req.body, null, 4)}`,
+    html: htmlGenerator(req.body || {}),
   }
   const mailgunInstance = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN })
   mailgunInstance.messages().send(data, (err, body) => {
@@ -40,6 +42,7 @@ app.all('*', (req, res) => {
 
 app.use((err, req, res, next) => {
   console.log('Error: ', JSON.stringify(err, null, 2), err.message)
+  console.log('Stacktrace: ', err.stack)
 
   res.status(err.status || 500)
   res.json({

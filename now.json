@@ -2,7 +2,7 @@
   "version": 2,
   "name": "goiaba-clothes-be",
   "builds": [
-    { "src": "index.js", "use": "@now/node" }
+    { "src": "src/index.js", "use": "@now/node" }
   ],
   "env": {
     "TECNICAL_EMAIL": "tpombeiro87@gmail.com",
