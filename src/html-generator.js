@@ -2,8 +2,8 @@
 const htmlGenerator = ({ clientDetails = {}, cart = {} }) => {
   const htmlToReturn = `
     <div>
-      <div style='display:flex;align-items: center;'>
-        <img style='margin-right: 10px;' width='30px' height='30px' src='https://www.goiabaclothes.pt/static/logo/big.png' />
+      <div style='display:flex;'>
+        <img style='margin-right: 10px;margin-top: 20px;' width='30px' height='30px' src='https://www.goiabaclothes.pt/static/logo/big.png' />
         <h1>Goiaba Clothes Site - Pedido de compra</h1>
       </div>
       <p>Recebeu um pedido de compra através do site.<p>
@@ -16,7 +16,7 @@ const htmlGenerator = ({ clientDetails = {}, cart = {} }) => {
   )}
     </div>
   `
-  console.log(htmlToReturn)
+  // console.log(htmlToReturn)
   return htmlToReturn
 }
 

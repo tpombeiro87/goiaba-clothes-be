@@ -1,19 +1,8 @@
-require('dotenv').config()
-
-const express = require('express')
-const bodyParser = require('body-parser')
 const mailgun = require('mailgun-js')
-const cors = require('cors')
 
 const htmlGenerator = require('./html-generator')
 
-const app = express()
-module.exports = app
-
-app.use(cors())
-app.use(bodyParser.json())
-
-app.post('*', (req, res) => {
+const sendEmail = (req, res) => {
   res.set('Content-Type', 'application/json')
   console.log('Got request')
   if (req.body === null) {
@@ -34,26 +23,6 @@ app.post('*', (req, res) => {
     console.log(body)
     return res.status(200).send({ msg: `Email sent!`, details: body })
   })
-})
-
-app.all('*', (req, res) => {
-  return res.status(405).send({ error: 'only POST requests are accepted' })
-})
-
-app.use((err, req, res, next) => {
-  console.log('Error: ', JSON.stringify(err, null, 2), err.message)
-  console.log('Stacktrace: ', err.stack)
-
-  res.status(err.status || 500)
-  res.json({
-    message: err.message,
-    error: err,
-    stack: err.stack,
-  })
-})
-
-if (process.env.LOCAL_DEV === 'true') {
-  app.listen(3000, () => {
-    console.log('goiaba-clothes-be listening on port 3000!')
-  })
 }
+
+module.exports = sendEmail
