@@ -16,8 +16,9 @@ firebase.initializeApp(config)
 const database = firebase.database()
 
 const writeContactOnDb = ({ uuid, clientDetails = {}, cart = {} }) => {
+  const date = (new Date()).toString()
   return database.ref('/' + uuid)
-    .set({ clientDetails, cart, date: new Date() })
+    .set({ clientDetails, cart, date })
     .then(() => ({ dbsaved: true }))
     .catch(dbError => ({ dbsaved: false, dbError }))
 }
