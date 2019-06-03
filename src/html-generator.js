@@ -1,5 +1,5 @@
 
-const htmlGenerator = ({ clientDetails = {}, cart = {} }) => {
+const htmlGenerator = ({ uuid, clientDetails = {}, cart = {} }) => {
   const clientDetailsHtml = Object.keys(clientDetails)
     .map(clientDetailKey =>
       `<p><span style='font-weight: bold;'>${clientDetailKey}:</span> ${clientDetails[clientDetailKey]}</p>`
@@ -21,9 +21,10 @@ const htmlGenerator = ({ clientDetails = {}, cart = {} }) => {
       ${clientDetailsHtml}
       <h3 style='margin-top: 25px;'>PRODUTOS NO CARRINHO</h3>
       ${cartDetailsHtml}
+      <p style='font-size: 10px;color: gray;'>system reference / uuid: ${uuid}</p>
     </div>
   `
-  console.log(htmlToReturn)
+  // console.log(htmlToReturn)
   return htmlToReturn
 }
 

@@ -13,7 +13,7 @@ deploy:
   script:
     - npm config set ignore-scripts false
     - npm i -g now --unsafe-perm --silent
-    - now -e MAILGUN_API_KEY=$MAILGUN_API_KEY --token=$NOW_TOKEN
+    - now -e MAILGUN_API_KEY=$MAILGUN_API_KEY -e FIREBASE_API_KEY=$FIREBASE_API_KEY --token=$NOW_TOKEN
   environment:
     name: production
     url: goiaba-clothes-be.tpombeiro.now.sh

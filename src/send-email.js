@@ -1,6 +1,7 @@
 const mailgun = require('mailgun-js')
 
 const htmlGenerator = require('./html-generator')
+const writeContactOnDb = require('./write-db')
 
 const sendEmail = (req, res) => {
   res.set('Content-Type', 'application/json')
@@ -16,13 +17,22 @@ const sendEmail = (req, res) => {
     html: htmlGenerator(req.body || {}),
   }
   const mailgunInstance = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN })
-  mailgunInstance.messages().send(data, (err, body) => {
-    if (err) {
-      return res.status(500).send({ err: err })
-    }
-    console.log(body)
-    return res.status(200).send({ msg: `Email sent!`, details: body })
-  })
+  mailgunInstance.messages()
+    .send(data, (err, emailServiceDetails) => {
+      if (err) {
+        return res.status(500).send({ err: err })
+      }
+      console.log(emailServiceDetails)
+      return writeContactOnDb(req.body)
+        .then(({ dbsaved, dbError }) =>
+          res.status(200).send({
+            msg: `Email sent!`,
+            emailServiceDetails,
+            dbsaved,
+            dbError,
+          })
+        )
+    })
 }
 
 module.exports = sendEmail
