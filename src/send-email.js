@@ -12,7 +12,7 @@ const sendEmail = (req, res) => {
 
   const data = {
     from: 'Site Goiaba Clothes <site@goiabaclothes.com>',
-    to: `${process.env.TECNICAL_EMAIL}`, //   , ${process.env.SALES_EMAIL}
+    to: `${process.env.TECNICAL_EMAIL}, ${process.env.SALES_EMAIL}`,
     subject: 'Goiaba Clothes Site - Pedido de compra',
     html: htmlGenerator(req.body || {}),
   }

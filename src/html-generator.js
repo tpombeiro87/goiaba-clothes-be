@@ -11,7 +11,7 @@ const htmlGenerator = ({ uuid, clientDetails = {}, cart = {} }) => {
     )
     .join(' ')
   const htmlToReturn = `
-    <div>
+    <div style='color: black;'>
       <div style='display:flex;'>
         <img style='margin-right: 10px;margin-top: 20px;' width='30px' height='30px' src='https://www.goiabaclothes.pt/static/logo/big.png' />
         <h1>Goiaba Clothes Site - Pedido de compra</h1>
