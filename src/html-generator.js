@@ -7,7 +7,7 @@ const htmlGenerator = ({ uuid, clientDetails = {}, cart = {} }) => {
     .join(' ')
   const cartDetailsHtml = Object.keys(cart)
     .map(cartItemKey =>
-      `<p><span style='font-weight: bold;'>${cart[cartItemKey].fields.title} - quantidade: ${cart[cartItemKey].quantity} - <a href='https://www.goiabaclothes.pt/product/?slug=${cartItemKey}'>link</a></span></p>`
+      `<p><span style='font-weight: bold;'>${cart[cartItemKey].fields.title} - quantidade: ${cart[cartItemKey].quantity} - <a href='https://www.goiabaclothes.pt/product/${cartItemKey}'>link</a></span></p>`
     )
     .join(' ')
   const htmlToReturn = `
