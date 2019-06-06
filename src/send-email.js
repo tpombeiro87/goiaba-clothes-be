@@ -11,12 +11,15 @@ const sendEmail = (req, res) => {
   }
 
   const data = {
-    from: 'Site Goiaba Clothes <site@goiabaclothes.com>',
+    from: 'Site Goiaba Clothes <no-reply@goiabaclothes.pt>',
     to: `${process.env.TECNICAL_EMAIL}, ${process.env.SALES_EMAIL}`,
     subject: 'Goiaba Clothes Site - Pedido de compra',
     html: htmlGenerator(req.body || {}),
   }
-  const mailgunInstance = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN })
+  const mailgunInstance = mailgun({
+    apiKey: process.env.MAILGUN_API_KEY,
+    domain: process.env.MAILGUN_DOMAIN,
+  })
   mailgunInstance.messages()
     .send(data, (err, emailServiceDetails) => {
       if (err) {
