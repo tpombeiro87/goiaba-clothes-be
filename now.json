@@ -6,8 +6,7 @@
   ],
   "env": {
     "TECNICAL_EMAIL": "tpombeiro87@gmail.com",
-    "SALES_EMAIL": "info.goiabaclothes@gmail.com",
-    "MAILGUN_DOMAIN": "mail.goiabaclothes.pt"
+    "SALES_EMAIL": "info.goiabaclothes@gmail.com"
   }
 }
 
