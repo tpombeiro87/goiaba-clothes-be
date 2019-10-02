@@ -6,7 +6,9 @@
   ],
   "env": {
     "TECNICAL_EMAIL": "tpombeiro87@gmail.com",
-    "SALES_EMAIL": "info.goiabaclothes@gmail.com"
+    "SALES_EMAIL": "info.goiabaclothes@gmail.com",
+    "SENDGRID_API_KEY": "@sendgrid_api_key",
+    "FIREBASE_API_KEY": "@firebase_api_key"
   }
 }
 
